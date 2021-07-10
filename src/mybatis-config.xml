@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"></properties>
+    <!--<typeAliases>-->
+        <!--<package name="com.gec.domain"></package>-->
+    <!--</typeAliases>-->
+    
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"></property>
+        </plugin>
+    </plugins>
+
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${mydriver}"></property>
+                <property name="url" value="${myurl}"></property>
+                <property name="username" value="${myusername}"></property>
+                <property name="password" value="${mypassword}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+       <package name="com.shop.mapper"></package>
+    </mappers>
+</configuration>
